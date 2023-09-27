@@ -11,4 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to Asian Americans' political ideologies/party affiliations. I'm not completely sure what the boundaries of my project are yet, but maybe I can examine how the recent coverage of anti-Asian hate crimes have affected the politics of Asian Americans, or maybe I can examine the generational gap among Asian Americans.
+I am interested in exploring data related to Asian Americans' political ideologies/party affiliations. I'm not completely sure what the boundaries of my project are yet, but maybe I can examine how the recent coverage of anti-Asian hate crimes have affected the politics of Asian Americans, or maybe I can examine the generational gap among Asian Americans of different ages.
