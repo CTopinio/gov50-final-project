@@ -12,3 +12,15 @@ output:
 ## Project thoughts
 
 I am interested in exploring data related to Asian Americans' political ideologies/party affiliations. I'm not completely sure what the boundaries of my project are yet, but maybe I can examine how the recent coverage of anti-Asian hate crimes have affected the politics of Asian Americans, or maybe I can examine the generational gap among Asian Americans of different ages.
+
+## Milestone 2
+
+Does Filipino American voter turnout increase if a candidate is a non-Filipino Asian American? Specifically, I plan to analyze how Filipino American voter turnout is affected by the candidacy of non-Filipino Asian Americans, and I will also use Filipino American turnout for non-Asian candidates as a benchmark. I hypothesize that non-Filipino Asian American candidates will have a limited effect on Fil-Am voter turnout; while second-generation Asian Americans may generally feel a pan-ethnic solidarity with other Asian Americans from political activism or shared lived experiences, others such as some recent Filipino immigrants may not perceive this solidarity. In particular, the historical legacy of Japanese occupation of the Philippines during World War II and the current geopolitical tensions between China and the Philippines over the South China Sea can deter the complete adoption of some Filipinos for a pan-Asian mobilization. Thus, I view that these different trends may “cancel” each other out. My sample takes from the dataset collected by Sara Sadwhani in her study of the effects of coethnic candidates and district size on Asian American voter turnout. The sample consists of all California Assembly general election candidates from 2012 through 2018. My explanatory variables of interest are the candidate’s race and ethnicity. If the candidate is Asian American, `cand1_asian` or `cand2_asian` should be equal to 1. To find an Asian American candidate’s ethnicity, I can examine the values of `cand1_asiancode` and `cand2_asiancode` (if the value = 6, then the candidate is Filipino; 1-5 and 7-8 identify other ethnic groups). The outcome variable is Filipino American voter turnout, which is the quotient of total registered and total votes cast within Filipino Americans. This information is found in the `filtrnout` column. If I find that Fil-Am turnout is similar for non-Filipino Asian American candidates and non-Asian American candidates, then this would support my hypothesis. However, if I find a significant increase or decrease in Fil-Am turnout for non-Filipino Asian American candidates, then this would challenge my hypothesis.
+
+
+Citation: Sadhwani, Sara. "Asian American mobilization: The effect of candidates and districts on Asian American voting behavior." Political Behavior 44.1 (2022): 105-131.
+
+
+
+
+
