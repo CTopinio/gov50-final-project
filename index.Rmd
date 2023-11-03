@@ -18,7 +18,50 @@ I am interested in exploring data related to Asian Americans' political ideologi
 Does Filipino American voter turnout increase if a candidate is a non-Filipino Asian American? Specifically, I plan to analyze how Filipino American voter turnout is affected by the candidacy of non-Filipino Asian Americans, and I will also use Filipino American turnout for non-Asian candidates as a benchmark. I hypothesize that non-Filipino Asian American candidates will have a limited effect on Fil-Am voter turnout; while second-generation Asian Americans may generally feel a pan-ethnic solidarity with other Asian Americans from political activism or shared lived experiences, others such as some recent Filipino immigrants may not perceive this solidarity. In particular, the historical legacy of Japanese occupation of the Philippines during World War II and the current geopolitical tensions between China and the Philippines over the South China Sea can deter the complete adoption of some Filipinos for a pan-Asian mobilization. Thus, I view that these different trends may “cancel” each other out. My sample takes from the dataset collected by Sara Sadwhani in her study of the effects of coethnic candidates and district size on Asian American voter turnout. The sample consists of all California Assembly general election candidates from 2012 through 2018. My explanatory variables of interest are the candidate’s race and ethnicity. If the candidate is Asian American, `cand1_asian` or `cand2_asian` should be equal to 1. To find an Asian American candidate’s ethnicity, I can examine the values of `cand1_asiancode` and `cand2_asiancode` (if the value = 6, then the candidate is Filipino; 1-5 and 7-8 identify other ethnic groups). The outcome variable is Filipino American voter turnout, which is the quotient of total registered and total votes cast within Filipino Americans. This information is found in the `filtrnout` column. If I find that Fil-Am turnout is similar for non-Filipino Asian American candidates and non-Asian American candidates, then this would support my hypothesis. However, if I find a significant increase or decrease in Fil-Am turnout for non-Filipino Asian American candidates, then this would challenge my hypothesis.
 
 
-Citation: Sadhwani, Sara. "Asian American mobilization: The effect of candidates and districts on Asian American voting behavior." Political Behavior 44.1 (2022): 105-131.
+Citation: Sadhwani, Sara, 2020, "Replication Data for: Asian American Mobilization: The Effect of Co-ethnic Candidates and Districts on Asian American Voting Behavior", https://doi.org/10.7910/DVN/KDGUS6, Harvard Dataverse, V1, UNF:6:EV1Q6+W8M/8cSIsVlQNf2Q== [fileUNF]
+
+```{r}
+library(tidyverse)
+asiantrn <- read_csv("datset_asiantrn_cagn12-18.csv")
+asiantrn_2012 <- asiantrn |>
+  filter(ElectionYear == "2012")
+asiantrn_2018 <- asiantrn |>
+  filter(ElectionYear == "2018")
+```
+## Milestone 3
+
+```{r}
+asiantrn_2012 |>
+  group_by(cand1_race) |>
+  summarize(filtrnout_mean = mean(filtrnout, na.rm = TRUE)) |>
+  ggplot(mapping = aes(x = cand1_race, y = filtrnout_mean)) +
+  geom_col(aes(fill = cand1_race)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(title = "Filipino-American Voter Turnout in 2012",
+       x = "Candidate 1's Race",
+       y = "Voter Turnout")
+```
+## Current experimentation with data
+
+```{r}
+asian_labels <- c("Chinese", "Japanese", "Korean", "Indian", "Vietnamese", "Filipino", "Taiwanese", "Other")
+
+asiantrn |>
+  group_by(cand1_asiancode) |>
+  summarize(filtrnout_mean = mean(filtrnout, na.rm = TRUE)) |>
+  ggplot(mapping = aes(x = cand1_asiancode, y = filtrnout_mean)) +
+  geom_col(aes(fill = cand1_asiancode)) +
+  scale_x_continuous(breaks = 1:8, labels = asian_labels)
+```
+
+
+```{r}
+cor(asiantrn$filtrnout, asiantrn$cand1_racecode, use = "pairwise")
+```
+
+
+
+
 
 
 
