@@ -31,7 +31,7 @@ asiantrn_2018 <- asiantrn |>
 ## Milestone 3
 
 ```{r}
-asiantrn_2012 |>
+filtrncand1_2012<- asiantrn_2012 |>
   group_by(cand1_race) |>
   summarize(filtrnout_mean = mean(filtrnout, na.rm = TRUE)) |>
   ggplot(mapping = aes(x = cand1_race, y = filtrnout_mean)) +
@@ -40,18 +40,20 @@ asiantrn_2012 |>
   labs(title = "Filipino-American Voter Turnout in 2012",
        x = "Candidate 1's Race",
        y = "Voter Turnout")
+filtrncand1_2012
 ```
 ## Current experimentation with data
 
 ```{r}
 asian_labels <- c("Chinese", "Japanese", "Korean", "Indian", "Vietnamese", "Filipino", "Taiwanese", "Other")
 
-asiantrn |>
+filtrn_asian_2012 <- asiantrn |>
   group_by(cand1_asiancode) |>
   summarize(filtrnout_mean = mean(filtrnout, na.rm = TRUE)) |>
   ggplot(mapping = aes(x = cand1_asiancode, y = filtrnout_mean)) +
   geom_col(aes(fill = cand1_asiancode)) +
   scale_x_continuous(breaks = 1:8, labels = asian_labels)
+filtrn_asian_2012
 ```
 
 
