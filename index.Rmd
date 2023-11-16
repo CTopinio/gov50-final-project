@@ -42,7 +42,7 @@ filtrncand1_2012<- asiantrn_2012 |>
        y = "Voter Turnout")
 filtrncand1_2012
 ```
-## Current experimentation with data
+## Current experimentation with data (Milestone 3)
 
 ```{r}
 asian_labels <- c("Chinese", "Japanese", "Korean", "Indian", "Vietnamese", "Filipino", "Taiwanese", "Other")
@@ -60,9 +60,38 @@ filtrn_asian_2012
 ```{r}
 cor(asiantrn$filtrnout, asiantrn$cand1_racecode, use = "pairwise")
 ```
+## Milestone 4 Experimentation
 
+```{r}
+asiantrn <- asiantrn |>
+  mutate(filipino_candidate = case_when(
+    cand1_asiancode == 6 ~ 1,
+    cand2_asiancode == 6 ~ 1,
+    TRUE ~ 0))
 
+mean(asiantrn$filipino_candidate)
+## Because of small percent of Filipino candidates (2.8 percent), you may want to do bootstrapping for final project
+```
 
+## Milestone 4
+
+```{r}
+ate_filcand <- asiantrn |>
+  group_by(filipino_candidate) |>
+  summarize(filtrnout_mean = mean(filtrnout, na.rm = TRUE)) |>
+  pivot_wider(names_from = filipino_candidate,
+              values_from = filtrnout_mean) |>
+  mutate(`Non-Filipino Candidate` = `0`,
+         `Filipino Candidate` = `1`) |>
+  select(-`0`, -`1`) |>
+  mutate(ATE = `Filipino Candidate` - `Non-Filipino Candidate`)
+
+ate_filcand
+```
+```{r}
+knitr::kable(ate_filcand, digits = 3)
+```
+The presence of a Filipino candidate on the ballot is associated with an increase in the proportion of Filipino turnout by 5 percentage points. However, because this data is from an observational study, we can't interpret the relationship between these two causally.
 
 
 
