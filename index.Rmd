@@ -10,7 +10,7 @@ output:
 ## Introduction
 Does having an Asian American candidate on the ballot increase Asian American voter turnout? Asian American history is filled with moments of political activism and solidarity among Asian Americans, yet there are various class and ideological fissures among Asian Americans as a whole today. Moreover, answering this question may enable candidates to better understand voters by knowing if Asian American identity is mobilizing factor.
 
-I hypothesize that Asian American candidates increase voter turnout among Asian Americans.
+I hypothesize that Asian American candidates increase voter turnout among Asian Americans in this study, based on past political mobilization and history.
 
 ## Project thoughts
 
