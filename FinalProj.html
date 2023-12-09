@@ -1618,6 +1618,7 @@ This observational study uses a cross-sectional design as we are comparing Asian
 </tbody>
 </table>
 </div>
+Calculating the ATE, I found an increase in Asian American voter turnout based on the number of Asian American candidates on the ballot.
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>reg_asiancount</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>asiantrnout</span> <span class='op'>~</span> <span class='va'>asiancand_count</span> <span class='op'>+</span> <span class='va'>pct_asian</span>, data <span class='op'>=</span> <span class='va'>asiantrn</span><span class='op'>)</span></span>
