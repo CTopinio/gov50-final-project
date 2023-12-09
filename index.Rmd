@@ -1,5 +1,5 @@
 ---
-title: "Gov 50 Final Project"
+title: "MILESTONES- Gov 50 Final Project"
 author: "Christian Topinio"
 description: "My final project"
 output:
@@ -7,7 +7,10 @@ output:
     self_contained: false
 ---
 
+## Introduction
+Does having an Asian American candidate on the ballot increase Asian American voter turnout? Asian American history is filled with moments of political activism and solidarity among Asian Americans, yet there are various class and ideological fissures among Asian Americans as a whole today. Moreover, answering this question may enable candidates to better understand voters by knowing if Asian American identity is mobilizing factor.
 
+I hypothesize that Asian American candidates increase voter turnout among Asian Americans.
 
 ## Project thoughts
 
