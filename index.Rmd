@@ -44,7 +44,9 @@ cand_col <- cand_asiantrnout |>
        y = "Mean of Asian Turnout")
 cand_col
 ```
+
 Here in this bar graph, there is a noticeable increase in Asian American voter turnout for every Asian candidate added on the ballot.
+
 ```{r}
 pct_scatter <- asiantrn |>
   ggplot(mapping = aes(x = pct_asian, y = asiantrnout)) +
@@ -54,6 +56,7 @@ pct_scatter <- asiantrn |>
        y = "Asian American Voter Turnout") 
 pct_scatter
 ```
+
 Here in this scatterplot plotted with a regression line, there is a positive correlation between the percent of Asian Americans in a distrcit with total Asian American voter turnout.
 
 
