@@ -1,0 +1,93 @@
+---
+title: "GOV 50 Final Project"
+author: "Christian Topinio"
+date: "2023-12-04"
+output:
+  distill::distill_article:
+    self_contained: false
+---
+## Introduction
+
+Does having an Asian American candidate on the ballot increase Asian American voter turnout? Asian American history is filled with moments of political activism and solidarity among Asian Americans, yet there are various class and ideological fissures among Asian Americans as a whole today. Moreover, answering this question may enable candidates to better understand voters by knowing if Asian American identity is mobilizing factor. Another dependent variable I am interested in seeing is if the percent of Asian Americans in a district affects Asian American voter turnout.
+
+I hypothesize that Asian American candidates increase voter turnout among Asian Americans.
+
+## Data Section
+For this project, I will use replication data from Sara Sadhwani's study "Asian American Mobilization: The Effect of Candidates and Districts on Asian American Voting Behavior." It contains data from the 2012 and 2018 California Assembly elections, containing data about candidates' races and turnout data for Asian American voters. Data on candidates' races (my main independent variable) was cross checked with state documents. To measure Asian American turnout (my dependent variable), Sadhwani uses surname matching.
+This observational study uses a cross-sectional design as we are comparing Asian American voter turnout between our control (non-Asian candidates) and treated (Asian candidates) groups. It is impossible in this study for there to be a "before treatment" time, as candidates cannot suddenly switch from non-Asian to Asian or vice-versa.
+
+```{r, echo = FALSE, show_col_types = FALSE}
+library(tidyverse)
+library(infer)
+library(broom)
+library(tinytex)
+asiantrn <- read_csv("datset_asiantrn_cagn12-18.csv") |>
+  filter(!is.na(cand1_asian) & !is.na(cand2_asian)) |>
+  mutate(asiancand_count = cand1_asian + cand2_asian,
+         gender_count = cand1_gender + cand2_gender) 
+```
+
+```{r, echo = FALSE}
+## Summary of Asian Turnout via how many Asian candidates there are in a ballot
+cand_asiantrnout <- asiantrn |>
+  group_by(asiancand_count) |>
+  summarize(asiantrnout_mean = mean(asiantrnout, na.rm = TRUE))
+knitr::kable(cand_asiantrnout, digits = 3, col.names = c("Number of Asian Candidates on Ballot", "Average Asian Turnout"))
+```
+```{r}
+cand_asiantrnout |>
+  ggplot(mapping = aes(x = asiancand_count, y = asiantrnout_mean)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "Average Asian American Turnout by Number of Asian Candidates on Ballot",
+       x = "Number of Asian Candidates",
+       y = "Mean of Asian Turnout")
+```
+Here in this bar graph, there is a noticeable increase in Asian American voter turnout for every Asian candidate added on the ballot.
+```{r}
+asiantrn |>
+  ggplot(mapping = aes(x = pct_asian, y = asiantrnout)) +
+  geom_jitter(alpha = 0.1) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Proportion of Asian Americans in District",
+       y = "Asian American Voter Turnout") 
+```
+Here in this scatterplot plotted with a regression line, there is a positive correlation between the percent of Asian Americans in a distrcit with total Asian American voter turnout.
+
+
+## Results
+```{r}
+ate_asiantrnout <- asiantrn |>
+  filter(!is.na(cand1_asian) & !is.na(cand2_asian)) |>
+  mutate(asiancand_count = cand1_asian + cand2_asian) |>
+  group_by(asiancand_count) |>
+  summarize(asiantrnout_mean = mean(asiantrnout, na.rm = TRUE)) |>
+  pivot_wider(
+    names_from = asiancand_count,
+    values_from = asiantrnout_mean
+  ) |>
+  mutate(ATE1 = `1` - `0`,
+         ATE2 = `2` - `0`)
+
+knitr::kable(ate_asiantrnout, digits = 3)
+```
+Calculating the ATE, I found an increase in Asian American voter turnout based on the number of Asian American candidates on the ballot. From zero to one Asian candidate, there is an average treatment effect of 2.7 percentage points toward Asian American turnout. From zero to two Asian candidates, there is an average treatment effect of 5.1 percentage points. 
+```{r}
+reg_asiancount <- lm(asiantrnout ~ asiancand_count + pct_asian, data = asiantrn)
+modelsummary::modelsummary(reg_asiancount,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
+The above table represents the multiple regression I did. The intercept which tells us the value of 56.7 percent Asian American voter turnout is not hugely important, as it assumes a scenario in which a district has zero Asian Americans, which is beyond the scope of the study. 
+The coefficient on `asiancand_count` argues that for every Asian American candidate added on the ballot, Asian American voter turnout increases by 2.4 percentage points. This value is highly significant, since its p-value (<0.001) is less than $\alpha = 0.01$.
+The coefficient on `pct_asian` argues that for every percentage point increase in the distict's Asian American population, Asian American voter turnout increases by 1.9 percentage points. This value is statistically significant since its p-value (0.038) is less than $\alpha = 0.05$, although this is not true at the 0.01 level. 
+
+## Conclusion
+
+In conclusion, I have found evidence to support the idea that there is a positive correlation between the number of Asian American candidates on the ballot and Asian American voter turnout. However, since my dataset was mainly based on an observational study, I have found multiple confounders that could prevent causal interpretations between these variables. For example, there is the issue of the candidate’s ideology. My analysis has not accounted for any affinities between the ideologies of Asian American voters and Asian American candidates, so more time and resources could be used in analyzing the correlation between these factors. Another potential confounder is geography, since the dataset that was used solely focused on California districts. To expand our sample and to improve inference for the broader Asian American population in the United States, similar analysis could be conducted to majority-Asian American districts in other states.
+
+
+
+
+## Cited Datasource
+Sadhwani, Sara, 2020, "Replication Data for: Asian American Mobilization: The Effect of Co-ethnic Candidates and Districts on Asian American Voting Behavior", https://doi.org/10.7910/DVN/KDGUS6, Harvard Dataverse, V1, UNF:6:EV1Q6+W8M/8cSIsVlQNf2Q== [fileUNF]

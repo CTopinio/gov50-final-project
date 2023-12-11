@@ -88,7 +88,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Final Project</title>
+  <title>GOV 50 Final Project</title>
 
 
 
@@ -98,19 +98,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Christian Topinio"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Final Project"/>
+  <meta property="og:title" content="GOV 50 Final Project"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Final Project"/>
+  <meta property="twitter:title" content="GOV 50 Final Project"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Final Project"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Christian Topinio"]}]}]},{"type":"character","attributes":{},"value":["2023-12-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["GOV 50 Final Project"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Christian Topinio"]}]}]},{"type":"character","attributes":{},"value":["2023-12-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1495,7 +1495,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Final Project","authors":[{"author":"Christian Topinio","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2023-12-04T00:00:00.000-05:00","citationText":"Topinio, 2023"}
+{"title":"GOV 50 Final Project","authors":[{"author":"Christian Topinio","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2023-12-04T00:00:00.000-05:00","citationText":"Topinio, 2023"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1505,7 +1505,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Final Project</h1>
+<h1>GOV 50 Final Project</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -1520,10 +1520,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h2 id="introduction">Introduction</h2>
-<p>Does having an Asian American candidate on the ballot increase Asian American voter turnout? Asian American history is filled with moments of political activism and solidarity among Asian Americans, yet there are various class and ideological fissures among Asian Americans as a whole today. Moreover, answering this question may enable candidates to better understand voters by knowing if Asian American identity is mobilizing factor.</p>
+<p>Does having an Asian American candidate on the ballot increase Asian American voter turnout? Asian American history is filled with moments of political activism and solidarity among Asian Americans, yet there are various class and ideological fissures among Asian Americans as a whole today. Moreover, answering this question may enable candidates to better understand voters by knowing if Asian American identity is mobilizing factor. Another dependent variable I am interested in seeing is if the percent of Asian Americans in a district affects Asian American voter turnout.</p>
 <p>I hypothesize that Asian American candidates increase voter turnout among Asian Americans.</p>
 <h2 id="data-section">Data Section</h2>
-<p>For this project, I will use replication data from Sara Sadhwani’s study “Asian American Mobilization: The Effect of Candidates and Districts on Asian American Voting Behavior.” It contains data from the 2012 and 2018 California Assembly elections, containing data about candidates’ races and turnout data for Asian American voters. Data on candidates’ races (my main independent variable) was cross checked with state documents. To measure Asian American turnout (my dependent variable), Sadhwani uses surname matching.
+<p>For this project, I will use replication data from Sara Sadhwani’s study “Asian American Mobilization: The Effect of Candidates and Districts on Asian American Voting Behavior.” It contains data from the 2012 and 2018 California Assembly elections, containing data about candidates’ races and turnout data for Asian American voters. Data on candidates’ races (my main independent variable) was cross checked with state documents. To measure Asian American turnout (my dependent varia ble), Sadhwani uses surname matching.
 This observational study uses a cross-sectional design as we are comparing Asian American voter turnout between our control (non-Asian candidates) and treated (Asian candidates) groups. It is impossible in this study for there to be a “before treatment” time, as candidates cannot suddenly switch from non-Asian to Asian or vice-versa.</p>
 <div class="layout-chunk" data-layout="l-body">
 
@@ -1563,23 +1563,19 @@ This observational study uses a cross-sectional design as we are comparing Asian
 </div>
 <p><img src="FinalProj_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
+Here in this bar graph, there is a noticeable increase in Asian American voter turnout for every Asian candidate added on the ballot.
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>asiantrn</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'>ggplot</span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pct_asian</span>, y <span class='op'>=</span> <span class='va'>asiantrnout</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span></code></pre>
+<span>  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Proportion of Asian Americans in District"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Asian American Voter Turnout"</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="FinalProj_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>asiantrn</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>ggplot</span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>asiancand_count</span>, y <span class='op'>=</span> <span class='va'>asiantrnout</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span></code></pre>
-</div>
-<p><img src="FinalProj_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
-</div>
+<p>Here in this scatterplot plotted with a regression line, there is a positive correlation between the percent of Asian Americans in a distrcit with total Asian American voter turnout.</p>
 <h2 id="results">Results</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1618,7 +1614,7 @@ This observational study uses a cross-sectional design as we are comparing Asian
 </tbody>
 </table>
 </div>
-Calculating the ATE, I found an increase in Asian American voter turnout based on the number of Asian American candidates on the ballot.
+Calculating the ATE, I found an increase in Asian American voter turnout based on the number of Asian American candidates on the ballot. From zero to one Asian candidate, there is an average treatment effect of 2.7 percentage points toward Asian American turnout. From zero to two Asian candidates, there is an average treatment effect of 5.1 percentage points.
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>reg_asiancount</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>asiantrnout</span> <span class='op'>~</span> <span class='va'>asiancand_count</span> <span class='op'>+</span> <span class='va'>pct_asian</span>, data <span class='op'>=</span> <span class='va'>asiantrn</span><span class='op'>)</span></span>
@@ -1732,33 +1728,6 @@ R2 Adj.
 </table>
 </div>
 <h2 id="conclusion">Conclusion</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>party_cand1trnout</span> <span class='op'>&lt;-</span> <span class='va'>asiantrn</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>cand1_pid</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>summarize</span><span class='op'>(</span>asiantrnout_mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>asiantrnout</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>drop_na</span><span class='op'>(</span><span class='op'>)</span></span>
-<span></span>
-<span><span class='va'>party_cand1trnout</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>ggplot</span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>cand1_pid</span>, y <span class='op'>=</span> <span class='va'>asiantrnout_mean</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
-</div>
-<p><img src="FinalProj_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>party_cand2trnout</span> <span class='op'>&lt;-</span> <span class='va'>asiantrn</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>cand2_pid</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>summarize</span><span class='op'>(</span>asiantrnout_mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>asiantrnout</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>drop_na</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>cand2_pid</span> <span class='op'>==</span> <span class='fl'>1</span> <span class='op'>|</span> <span class='va'>cand2_pid</span> <span class='op'>==</span> <span class='fl'>2</span><span class='op'>)</span></span>
-<span></span>
-<span><span class='va'>party_cand2trnout</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'>ggplot</span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>cand2_pid</span>, y <span class='op'>=</span> <span class='va'>asiantrnout_mean</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
-</div>
-<p><img src="FinalProj_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
-</div>
 <p>Not sure if the way I’ve analyzed the effect of candidate party is actually good.</p>
 <h2 id="cited-datasource">Cited Datasource</h2>
 <p>Sadhwani, Sara, 2020, “Replication Data for: Asian American Mobilization: The Effect of Co-ethnic Candidates and Districts on Asian American Voting Behavior”, <a href="https://doi.org/10.7910/DVN/KDGUS6" class="uri">https://doi.org/10.7910/DVN/KDGUS6</a>, Harvard Dataverse, V1, UNF:6:EV1Q6+W8M/8cSIsVlQNf2Q== [fileUNF]</p>
