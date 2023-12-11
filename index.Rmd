@@ -34,13 +34,15 @@ cand_asiantrnout <- asiantrn |>
   summarize(asiantrnout_mean = mean(asiantrnout, na.rm = TRUE))
 knitr::kable(cand_asiantrnout, digits = 3, col.names = c("Number of Asian Candidates on Ballot", "Average Asian Turnout"))
 ```
+
 ```{r}
-cand_asiantrnout |>
+cand_col <- cand_asiantrnout |>
   ggplot(mapping = aes(x = asiancand_count, y = asiantrnout_mean)) +
   geom_col(fill = "steelblue") +
   labs(title = "Average Asian American Turnout by Number of Asian Candidates on Ballot",
        x = "Number of Asian Candidates",
        y = "Mean of Asian Turnout")
+cand_col
 ```
 Here in this bar graph, there is a noticeable increase in Asian American voter turnout for every Asian candidate added on the ballot.
 ```{r}
@@ -71,7 +73,9 @@ ate_asiantrnout <- asiantrn |>
 
 knitr::kable(ate_asiantrnout, digits = 3)
 ```
+
 Calculating the ATE, I found an increase in Asian American voter turnout based on the number of Asian American candidates on the ballot. From zero to one Asian candidate, there is an average treatment effect of 2.7 percentage points toward Asian American turnout. From zero to two Asian candidates, there is an average treatment effect of 5.1 percentage points. 
+
 ```{r}
 reg_asiancount <- lm(asiantrnout ~ asiancand_count + pct_asian, data = asiantrn)
 modelsummary::modelsummary(reg_asiancount,
